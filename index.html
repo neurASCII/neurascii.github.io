@@ -13,6 +13,61 @@
     td, th { border: 1px solid #8884; padding: 0.35rem 0.5rem; text-align: left; }
     a { color: inherit; }
     .muted { opacity: 0.85; }
+    .carousel { margin: 0.75rem 0 1rem; }
+    .carousel-viewport {
+      overflow: hidden;
+      border: 1px solid #4444;
+      position: relative;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.25s ease;
+    }
+    .carousel-slide {
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+    .carousel-slide img {
+      margin: 0;
+      border: 0;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .carousel-caption {
+      margin: 0.5rem 0 0;
+      font-size: 0.95rem;
+    }
+    .carousel-nav {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin: 0.5rem 0 0;
+      flex-wrap: wrap;
+    }
+    .carousel-nav button {
+      font: inherit;
+      padding: 0.35rem 0.75rem;
+      cursor: pointer;
+    }
+    .carousel-dots {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+      margin-left: auto;
+    }
+    .carousel-dots button {
+      width: 0.65rem;
+      height: 0.65rem;
+      padding: 0;
+      border-radius: 50%;
+      border: 1px solid #888;
+      background: transparent;
+      cursor: pointer;
+    }
+    .carousel-dots button[aria-current="true"] {
+      background: currentColor;
+    }
   </style>
 </head>
 <body>
@@ -34,8 +89,65 @@
   <p>Both makeup classes in one run.</p>
 
   <h2>Multi-class smoke (videos_all)</h2>
-  <img src="assets/gifs/videos_all.gif" alt="Full UCF101-Videos multi-class rollout" width="800">
-  <p>Next-frame train on the full on-disk UCF101-Videos dump (all classes), then autoregressive rollout.</p>
+  <div class="carousel" id="videos-all-carousel" aria-roledescription="carousel" aria-label="videos_all class rollouts">
+    <div class="carousel-viewport">
+      <div class="carousel-track">
+        <div class="carousel-slide" data-caption="ApplyEyeMakeup"><img src="assets/gifs/videos_all_01_ApplyEyeMakeup.gif" alt="ApplyEyeMakeup rollout" width="800"></div>
+        <div class="carousel-slide" data-caption="BabyCrawling"><img src="assets/gifs/videos_all_02_BabyCrawling.gif" alt="BabyCrawling rollout" width="800"></div>
+        <div class="carousel-slide" data-caption="BaseballPitch"><img src="assets/gifs/videos_all_03_BaseballPitch.gif" alt="BaseballPitch rollout" width="800"></div>
+        <div class="carousel-slide" data-caption="HighJump"><img src="assets/gifs/videos_all_04_HighJump.gif" alt="HighJump rollout" width="800"></div>
+        <div class="carousel-slide" data-caption="PlayingCello"><img src="assets/gifs/videos_all_05_PlayingCello.gif" alt="PlayingCello rollout" width="800"></div>
+        <div class="carousel-slide" data-caption="PullUps"><img src="assets/gifs/videos_all_06_PullUps.gif" alt="PullUps rollout" width="800"></div>
+        <div class="carousel-slide" data-caption="Rafting"><img src="assets/gifs/videos_all_07_Rafting.gif" alt="Rafting rollout" width="800"></div>
+        <div class="carousel-slide" data-caption="Rowing"><img src="assets/gifs/videos_all_08_Rowing.gif" alt="Rowing rollout" width="800"></div>
+      </div>
+    </div>
+    <p class="carousel-caption" id="videos-all-caption">ApplyEyeMakeup</p>
+    <div class="carousel-nav">
+      <button type="button" data-dir="-1" aria-label="Previous class">Prev</button>
+      <button type="button" data-dir="1" aria-label="Next class">Next</button>
+      <div class="carousel-dots" id="videos-all-dots" role="tablist" aria-label="Select class"></div>
+    </div>
+  </div>
+  <p>Next-frame train on the full on-disk UCF101-Videos dump (all classes), then autoregressive rollout. Carousel shows diverse class seeds.</p>
+  <script>
+  (function () {
+    var root = document.getElementById("videos-all-carousel");
+    if (!root) return;
+    var track = root.querySelector(".carousel-track");
+    var slides = Array.prototype.slice.call(root.querySelectorAll(".carousel-slide"));
+    var caption = document.getElementById("videos-all-caption");
+    var dots = document.getElementById("videos-all-dots");
+    var i = 0;
+    function go(n) {
+      i = (n + slides.length) % slides.length;
+      track.style.transform = "translateX(-" + (i * 100) + "%)";
+      caption.textContent = slides[i].getAttribute("data-caption") || "";
+      var buttons = dots.querySelectorAll("button");
+      for (var d = 0; d < buttons.length; d++) {
+        buttons[d].setAttribute("aria-current", d === i ? "true" : "false");
+      }
+    }
+    slides.forEach(function (slide, idx) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-label", slide.getAttribute("data-caption") || ("Slide " + (idx + 1)));
+      b.addEventListener("click", function () { go(idx); });
+      dots.appendChild(b);
+    });
+    root.querySelectorAll(".carousel-nav > button[data-dir]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        go(i + parseInt(btn.getAttribute("data-dir"), 10));
+      });
+    });
+    root.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") { e.preventDefault(); go(i - 1); }
+      if (e.key === "ArrowRight") { e.preventDefault(); go(i + 1); }
+    });
+    root.tabIndex = 0;
+    go(0);
+  })();
+  </script>
 
   <h2>Hypothesis</h2>
   <p>libcaca can act as a <strong>fixed perceptual encoder</strong>. Training on glyph + color lattices may learn short-term video dynamics with less capacity than pixel-space models. We do <strong>not</strong> yet claim efficiency vs equal-bandwidth pixel baselines.</p>
