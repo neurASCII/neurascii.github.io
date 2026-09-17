@@ -182,6 +182,13 @@
     <code>videos_all</code> weights. Train <code>max_steps=10000</code>; best checkpoint at step
     <strong>8000</strong> with val loss ≈ <strong>2.849</strong> (~32M params).
   </p>
+  <p>
+    Phase&nbsp;7 narrow gate: <code>eye_motion</code> <strong>PASS</strong>.
+    The follow-on <code>fullvideo_bugblob</code> finetune still shows the bug-blob attractor on free rollouts
+    (mean_any≈0.005, positive blob growth slope; local diagnostics under
+    <code>neurascii/samples/rollouts/</code>). Carousel below is greedy (temp=0) from
+    <code>runs/fullvideo_bugblob/ckpt_best.pt</code>.
+  </p>
   <div class="carousel" id="fullvideo-carousel" aria-roledescription="carousel" aria-label="UCF101 Fullvideo class rollouts">
     <div class="carousel-viewport">
       <div class="carousel-track">
@@ -204,7 +211,7 @@
       <div class="carousel-dots" role="tablist" aria-label="Select fullvideo class"></div>
     </div>
   </div>
-  <p>Carousel: 10 diverse class seeds, <strong>greedy</strong> (temp=0) free rollouts. Phase B-shaped multi-horizon diagnostics kept local under <code>samples/rollouts/</code>.</p>
+  <p>Carousel: 10 diverse class seeds, <strong>greedy</strong> (temp=0) free rollouts from <code>fullvideo_bugblob</code>. Phase&nbsp;B-shaped multi-horizon diagnostics kept local under <code>samples/rollouts/</code> (not published).</p>
 <script>
   (function () {
     function initCarousel(root) {
