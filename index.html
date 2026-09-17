@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>neurASCII</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: ui-sans-serif, system-ui, sans-serif; max-width: 52rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+    h1, h2 { line-height: 1.2; }
+    img { max-width: 100%; height: auto; display: block; margin: 0.75rem 0 1.5rem; border: 1px solid #4444; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    td, th { border: 1px solid #8884; padding: 0.35rem 0.5rem; text-align: left; }
+    a { color: inherit; }
+    .muted { opacity: 0.85; }
+  </style>
+</head>
+<body>
+  <h1>neurASCII</h1>
+  <p>A small neural video model that operates <strong>natively on colored ASCII / libcaca-style video</strong>, rather than on pixels.</p>
+  <p><strong>Code:</strong> <a href="https://github.com/Decentricity/neurascii">Decentricity/neurascii</a></p>
+  <p class="muted">GIFs are rendered offline from symbolic <code>.avm.npz</code> rollouts (glyph + xterm colors), not terminal screenshots.</p>
+
+  <h2>ApplyEyeMakeup POC</h2>
+  <img src="assets/gifs/eye.gif" alt="ApplyEyeMakeup rollout" width="800">
+  <p>Single-class next-frame training (kept separate from lipstick).</p>
+
+  <h2>ApplyLipstick POC</h2>
+  <img src="assets/gifs/lipstick.gif" alt="ApplyLipstick rollout" width="800">
+  <p>Trained separately from eye-makeup.</p>
+
+  <h2>Merged Apply* smoke</h2>
+  <img src="assets/gifs/smoke.gif" alt="Merged Apply smoke rollout" width="800">
+  <p>Both makeup classes in one run.</p>
+
+  <h2>Hypothesis</h2>
+  <p>libcaca can act as a <strong>fixed perceptual encoder</strong>. Training on glyph + color lattices may learn short-term video dynamics with less capacity than pixel-space models. We do <strong>not</strong> yet claim efficiency vs equal-bandwidth pixel baselines.</p>
+
+  <h2>Method (MVP)</h2>
+  <table>
+    <tr><th>Knob</th><th>Value</th></tr>
+    <tr><td>Frame</td><td>80×48 chars, 10 FPS</td></tr>
+    <tr><td>Cell</td><td>glyph + fg + bg (separate heads)</td></tr>
+    <tr><td>Palette</td><td>xterm-256</td></tr>
+    <tr><td>Patches</td><td>4×4 (240 / frame)</td></tr>
+    <tr><td>Model</td><td>~32M Transformer, next-frame</td></tr>
+    <tr><td>Context</td><td>8 frames</td></tr>
+  </table>
+
+  <h2>Data ladder</h2>
+  <ol>
+    <li><a href="https://huggingface.co/datasets/bitmind/UCF101-Videos">UCF101-Videos</a> (~372MB) — current</li>
+    <li><a href="https://huggingface.co/datasets/bitmind/UCF101Fullvideo">UCF101Fullvideo</a> (~7GB) — next</li>
+    <li>Long-form / other domains — later</li>
+  </ol>
+</body>
+</html>
