@@ -1,0 +1,10 @@
+01|v_ApplyLipstick_g01_c04
+02|v_ApplyLipstick_g03_c01
+03|v_ApplyLipstick_g06_c05
+04|v_ApplyLipstick_g12_c03
+05|v_ApplyLipstick_g14_c03
+06|v_ApplyLipstick_g15_c04
+07|v_ApplyLipstick_g20_c02
+08|v_ApplyLipstick_g20_c03
+09|v_ApplyLipstick_g21_c02
+10|v_ApplyLipstick_g22_c01

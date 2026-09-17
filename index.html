@@ -77,12 +77,54 @@
   <p class="muted">GIFs are rendered offline from symbolic <code>.avm.npz</code> rollouts (glyph + xterm colors), not terminal screenshots.</p>
 
   <h2>ApplyEyeMakeup POC</h2>
-  <img src="assets/gifs/eye.gif" alt="ApplyEyeMakeup rollout" width="800">
-  <p>Single-class next-frame training (kept separate from lipstick).</p>
+  <div class="carousel" id="eye-carousel" aria-roledescription="carousel" aria-label="ApplyEyeMakeup rollouts">
+    <div class="carousel-viewport">
+      <div class="carousel-track">
+        <div class="carousel-slide" data-caption="v_ApplyEyeMakeup_g01_c02"><img src="assets/gifs/eye_01.gif" alt="ApplyEyeMakeup rollout 1" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyEyeMakeup_g01_c04"><img src="assets/gifs/eye_02.gif" alt="ApplyEyeMakeup rollout 2" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyEyeMakeup_g02_c04"><img src="assets/gifs/eye_03.gif" alt="ApplyEyeMakeup rollout 3" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyEyeMakeup_g05_c03"><img src="assets/gifs/eye_04.gif" alt="ApplyEyeMakeup rollout 4" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyEyeMakeup_g06_c02"><img src="assets/gifs/eye_05.gif" alt="ApplyEyeMakeup rollout 5" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyEyeMakeup_g10_c01"><img src="assets/gifs/eye_06.gif" alt="ApplyEyeMakeup rollout 6" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyEyeMakeup_g14_c05"><img src="assets/gifs/eye_07.gif" alt="ApplyEyeMakeup rollout 7" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyEyeMakeup_g17_c03"><img src="assets/gifs/eye_08.gif" alt="ApplyEyeMakeup rollout 8" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyEyeMakeup_g20_c02"><img src="assets/gifs/eye_09.gif" alt="ApplyEyeMakeup rollout 9" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyEyeMakeup_g23_c03"><img src="assets/gifs/eye_10.gif" alt="ApplyEyeMakeup rollout 10" width="800"></div>
+      </div>
+    </div>
+    <p class="carousel-caption">v_ApplyEyeMakeup_g01_c02</p>
+    <div class="carousel-nav">
+      <button type="button" data-dir="-1" aria-label="Previous eye rollout">Prev</button>
+      <button type="button" data-dir="1" aria-label="Next eye rollout">Next</button>
+      <div class="carousel-dots" role="tablist" aria-label="Select eye rollout"></div>
+    </div>
+  </div>
+  <p>Single-class next-frame training (kept separate from lipstick). Carousel: 10 seed clips.</p>
 
   <h2>ApplyLipstick POC</h2>
-  <img src="assets/gifs/lipstick.gif" alt="ApplyLipstick rollout" width="800">
-  <p>Trained separately from eye-makeup.</p>
+  <div class="carousel" id="lipstick-carousel" aria-roledescription="carousel" aria-label="ApplyLipstick rollouts">
+    <div class="carousel-viewport">
+      <div class="carousel-track">
+        <div class="carousel-slide" data-caption="v_ApplyLipstick_g01_c04"><img src="assets/gifs/lipstick_01.gif" alt="ApplyLipstick rollout 1" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyLipstick_g03_c01"><img src="assets/gifs/lipstick_02.gif" alt="ApplyLipstick rollout 2" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyLipstick_g06_c05"><img src="assets/gifs/lipstick_03.gif" alt="ApplyLipstick rollout 3" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyLipstick_g12_c03"><img src="assets/gifs/lipstick_04.gif" alt="ApplyLipstick rollout 4" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyLipstick_g14_c03"><img src="assets/gifs/lipstick_05.gif" alt="ApplyLipstick rollout 5" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyLipstick_g15_c04"><img src="assets/gifs/lipstick_06.gif" alt="ApplyLipstick rollout 6" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyLipstick_g20_c02"><img src="assets/gifs/lipstick_07.gif" alt="ApplyLipstick rollout 7" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyLipstick_g20_c03"><img src="assets/gifs/lipstick_08.gif" alt="ApplyLipstick rollout 8" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyLipstick_g21_c02"><img src="assets/gifs/lipstick_09.gif" alt="ApplyLipstick rollout 9" width="800"></div>
+        <div class="carousel-slide" data-caption="v_ApplyLipstick_g22_c01"><img src="assets/gifs/lipstick_10.gif" alt="ApplyLipstick rollout 10" width="800"></div>
+      </div>
+    </div>
+    <p class="carousel-caption">v_ApplyLipstick_g01_c04</p>
+    <div class="carousel-nav">
+      <button type="button" data-dir="-1" aria-label="Previous lipstick rollout">Prev</button>
+      <button type="button" data-dir="1" aria-label="Next lipstick rollout">Next</button>
+      <div class="carousel-dots" role="tablist" aria-label="Select lipstick rollout"></div>
+    </div>
+  </div>
+  <p>Trained separately from eye-makeup. Carousel: 10 seed clips.</p>
 
   <h2>Merged Apply* smoke</h2>
   <img src="assets/gifs/smoke.gif" alt="Merged Apply smoke rollout" width="800">
@@ -102,50 +144,53 @@
         <div class="carousel-slide" data-caption="Rowing"><img src="assets/gifs/videos_all_08_Rowing.gif" alt="Rowing rollout" width="800"></div>
       </div>
     </div>
-    <p class="carousel-caption" id="videos-all-caption">ApplyEyeMakeup</p>
+    <p class="carousel-caption">ApplyEyeMakeup</p>
     <div class="carousel-nav">
       <button type="button" data-dir="-1" aria-label="Previous class">Prev</button>
       <button type="button" data-dir="1" aria-label="Next class">Next</button>
-      <div class="carousel-dots" id="videos-all-dots" role="tablist" aria-label="Select class"></div>
+      <div class="carousel-dots" role="tablist" aria-label="Select class"></div>
     </div>
   </div>
   <p>Next-frame train on the full on-disk UCF101-Videos dump (all classes), then autoregressive rollout. Carousel shows diverse class seeds.</p>
   <script>
   (function () {
-    var root = document.getElementById("videos-all-carousel");
-    if (!root) return;
-    var track = root.querySelector(".carousel-track");
-    var slides = Array.prototype.slice.call(root.querySelectorAll(".carousel-slide"));
-    var caption = document.getElementById("videos-all-caption");
-    var dots = document.getElementById("videos-all-dots");
-    var i = 0;
-    function go(n) {
-      i = (n + slides.length) % slides.length;
-      track.style.transform = "translateX(-" + (i * 100) + "%)";
-      caption.textContent = slides[i].getAttribute("data-caption") || "";
-      var buttons = dots.querySelectorAll("button");
-      for (var d = 0; d < buttons.length; d++) {
-        buttons[d].setAttribute("aria-current", d === i ? "true" : "false");
+    function initCarousel(root) {
+      if (!root) return;
+      var track = root.querySelector(".carousel-track");
+      var slides = Array.prototype.slice.call(root.querySelectorAll(".carousel-slide"));
+      var caption = root.querySelector(".carousel-caption");
+      var dots = root.querySelector(".carousel-dots");
+      if (!track || !slides.length || !caption || !dots) return;
+      var i = 0;
+      function go(n) {
+        i = (n + slides.length) % slides.length;
+        track.style.transform = "translateX(-" + (i * 100) + "%)";
+        caption.textContent = slides[i].getAttribute("data-caption") || "";
+        var buttons = dots.querySelectorAll("button");
+        for (var d = 0; d < buttons.length; d++) {
+          buttons[d].setAttribute("aria-current", d === i ? "true" : "false");
+        }
       }
-    }
-    slides.forEach(function (slide, idx) {
-      var b = document.createElement("button");
-      b.type = "button";
-      b.setAttribute("aria-label", slide.getAttribute("data-caption") || ("Slide " + (idx + 1)));
-      b.addEventListener("click", function () { go(idx); });
-      dots.appendChild(b);
-    });
-    root.querySelectorAll(".carousel-nav > button[data-dir]").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        go(i + parseInt(btn.getAttribute("data-dir"), 10));
+      slides.forEach(function (slide, idx) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("aria-label", slide.getAttribute("data-caption") || ("Slide " + (idx + 1)));
+        b.addEventListener("click", function () { go(idx); });
+        dots.appendChild(b);
       });
-    });
-    root.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowLeft") { e.preventDefault(); go(i - 1); }
-      if (e.key === "ArrowRight") { e.preventDefault(); go(i + 1); }
-    });
-    root.tabIndex = 0;
-    go(0);
+      root.querySelectorAll(".carousel-nav > button[data-dir]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          go(i + parseInt(btn.getAttribute("data-dir"), 10));
+        });
+      });
+      root.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowLeft") { e.preventDefault(); go(i - 1); }
+        if (e.key === "ArrowRight") { e.preventDefault(); go(i + 1); }
+      });
+      root.tabIndex = 0;
+      go(0);
+    }
+    Array.prototype.forEach.call(document.querySelectorAll(".carousel"), initCarousel);
   })();
   </script>
 
