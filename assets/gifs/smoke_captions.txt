@@ -1,0 +1,10 @@
+01|ApplyEyeMakeup / v_ApplyEyeMakeup_g01_c02
+02|ApplyEyeMakeup / v_ApplyEyeMakeup_g02_c04
+03|ApplyEyeMakeup / v_ApplyEyeMakeup_g06_c02
+04|ApplyEyeMakeup / v_ApplyEyeMakeup_g14_c05
+05|ApplyEyeMakeup / v_ApplyEyeMakeup_g20_c02
+06|ApplyLipstick / v_ApplyLipstick_g01_c04
+07|ApplyLipstick / v_ApplyLipstick_g06_c05
+08|ApplyLipstick / v_ApplyLipstick_g14_c03
+09|ApplyLipstick / v_ApplyLipstick_g20_c02
+10|ApplyLipstick / v_ApplyLipstick_g21_c02
