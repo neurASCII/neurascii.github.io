@@ -1,0 +1,7 @@
+{
+  "mode": "greedy",
+  "temperature": 0.0,
+  "top_k": null,
+  "steps": 100,
+  "caption_note": "greedy (temp=0)"
+}

@@ -173,6 +173,38 @@
     </div>
   </div>
   <p>Next-frame train on the full on-disk UCF101-Videos dump (all classes), then autoregressive rollout. Carousel shows diverse class seeds.</p>
+
+  <h2>Phase C — UCF101 Fullvideo</h2>
+  <p>
+    Finetune on <a href="https://huggingface.co/datasets/bitmind/UCF101Fullvideo">bitmind/UCF101Fullvideo</a>
+    (~7&nbsp;GB corpus): <strong>13451</strong> videos / <strong>101</strong> classes, warm-started from
+    <code>videos_all</code> weights. Train <code>max_steps=10000</code>; best checkpoint at step
+    <strong>8000</strong> with val loss ≈ <strong>2.849</strong> (~32M params). Carousel: 10 diverse class seeds,
+    greedy free rollout (temp=0).
+  </p>
+  <div class="carousel" id="fullvideo-carousel" aria-roledescription="carousel" aria-label="UCF101 Fullvideo class rollouts">
+    <div class="carousel-viewport">
+      <div class="carousel-track">
+        <div class="carousel-slide" data-caption="ApplyEyeMakeup"><img src="assets/gifs/fullvideo_01_ApplyEyeMakeup.gif" alt="ApplyEyeMakeup fullvideo rollout" width="800"></div>
+        <div class="carousel-slide" data-caption="Biking"><img src="assets/gifs/fullvideo_02_Biking.gif" alt="Biking fullvideo rollout" width="800"></div>
+        <div class="carousel-slide" data-caption="CleanAndJerk"><img src="assets/gifs/fullvideo_03_CleanAndJerk.gif" alt="CleanAndJerk fullvideo rollout" width="800"></div>
+        <div class="carousel-slide" data-caption="FrisbeeCatch"><img src="assets/gifs/fullvideo_04_FrisbeeCatch.gif" alt="FrisbeeCatch fullvideo rollout" width="800"></div>
+        <div class="carousel-slide" data-caption="HorseRace"><img src="assets/gifs/fullvideo_05_HorseRace.gif" alt="HorseRace fullvideo rollout" width="800"></div>
+        <div class="carousel-slide" data-caption="LongJump"><img src="assets/gifs/fullvideo_06_LongJump.gif" alt="LongJump fullvideo rollout" width="800"></div>
+        <div class="carousel-slide" data-caption="PlayingDhol"><img src="assets/gifs/fullvideo_07_PlayingDhol.gif" alt="PlayingDhol fullvideo rollout" width="800"></div>
+        <div class="carousel-slide" data-caption="Punch"><img src="assets/gifs/fullvideo_08_Punch.gif" alt="Punch fullvideo rollout" width="800"></div>
+        <div class="carousel-slide" data-caption="Skiing"><img src="assets/gifs/fullvideo_09_Skiing.gif" alt="Skiing fullvideo rollout" width="800"></div>
+        <div class="carousel-slide" data-caption="TaiChi"><img src="assets/gifs/fullvideo_10_TaiChi.gif" alt="TaiChi fullvideo rollout" width="800"></div>
+      </div>
+    </div>
+    <p class="carousel-caption">ApplyEyeMakeup</p>
+    <div class="carousel-nav">
+      <button type="button" data-dir="-1" aria-label="Previous fullvideo class">Prev</button>
+      <button type="button" data-dir="1" aria-label="Next fullvideo class">Next</button>
+      <div class="carousel-dots" role="tablist" aria-label="Select fullvideo class"></div>
+    </div>
+  </div>
+  <p>Autoregressive ASCII rollouts from the Fullvideo best checkpoint. Sampler: greedy (temp=0).</p>
   <script>
   (function () {
     function initCarousel(root) {
@@ -232,7 +264,7 @@
   <h2>Data ladder</h2>
   <ol>
     <li><a href="https://huggingface.co/datasets/bitmind/UCF101-Videos">UCF101-Videos</a> (~372MB) — current</li>
-    <li><a href="https://huggingface.co/datasets/bitmind/UCF101Fullvideo">UCF101Fullvideo</a> (~7GB) — next</li>
+    <li><a href="https://huggingface.co/datasets/bitmind/UCF101Fullvideo">UCF101Fullvideo</a> (~7GB) — Phase C (this page)</li>
     <li>Long-form / other domains — later</li>
   </ol>
 </body>
