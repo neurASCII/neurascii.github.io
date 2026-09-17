@@ -176,6 +176,12 @@
 
   
   <h2>Phase C — UCF101 Fullvideo</h2>
+  <p>
+    Finetune on <a href="https://huggingface.co/datasets/bitmind/UCF101Fullvideo">bitmind/UCF101Fullvideo</a>
+    (~7&nbsp;GB corpus): <strong>13451</strong> videos / <strong>101</strong> classes, warm-started from
+    <code>videos_all</code> weights. Train <code>max_steps=10000</code>; best checkpoint at step
+    <strong>8000</strong> with val loss ≈ <strong>2.849</strong> (~32M params).
+  </p>
   <div class="carousel" id="fullvideo-carousel" aria-roledescription="carousel" aria-label="UCF101 Fullvideo class rollouts">
     <div class="carousel-viewport">
       <div class="carousel-track">
@@ -198,7 +204,7 @@
       <div class="carousel-dots" role="tablist" aria-label="Select fullvideo class"></div>
     </div>
   </div>
-  <p>Next-frame train on bitmind/UCF101Fullvideo (all classes), warm-started from videos_all. Carousel: 10 diverse class seeds, <strong>greedy</strong> (argmax) free rollouts; Phase B-shaped long-horizon diagnostics kept local under <code>samples/rollouts/</code>.</p>
+  <p>Carousel: 10 diverse class seeds, <strong>greedy</strong> (temp=0) free rollouts. Phase B-shaped multi-horizon diagnostics kept local under <code>samples/rollouts/</code>.</p>
 <script>
   (function () {
     function initCarousel(root) {
