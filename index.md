@@ -29,6 +29,12 @@ Trained separately from eye-makeup — not mixed in the POC stage.
 
 Both makeup classes in one run; first multi-clip smoke test.
 
+## Full on-disk UCF101-Videos (videos_all)
+
+![videos_all multi-class rollout](assets/gifs/videos_all.gif)
+
+All ~637 clips / 24 classes from the bitmind/UCF101-Videos dump; early-stopped best checkpoint rollout.
+
 ## Hypothesis
 
 libcaca (or a compatible ASCII renderer) can act as a **fixed perceptual encoder**. Training a temporal model directly on glyph + color lattices may learn coherent short-term video dynamics with far less capacity than pixel-space video models.
