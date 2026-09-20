@@ -175,7 +175,21 @@
   <p>Next-frame train on the full on-disk UCF101-Videos dump (all classes), then autoregressive rollout. Carousel shows diverse class seeds.</p>
 
   
-  <h2>Phase C — UCF101 Fullvideo</h2>
+  <h2>Glyph-first — mono overfit (Stage A)</h2>
+  <p>
+    Colored Fullvideo GIFs collapsed to a single modal glyph with only background colors moving.
+    Stage&nbsp;A restarts from a <strong>luminance glyph ramp</strong> (69+ printable chars, mono fg/bg)
+    and trains <strong>glyph-only</strong> on one ApplyEyeMakeup clip. Success = free rollout readable
+    with colors off.
+  </p>
+  <p>
+    Free-run @ 48–96 steps: <strong>70</strong> unique glyphs, entropy ≈ <strong>4.4</strong> bits,
+    modal fraction ≈ <strong>0.34</strong> (not collapsed). GIF below is white-on-black (no color channel).
+  </p>
+  <p><img src="assets/gifs/glyph_mono_01.gif" alt="Glyph-only mono free rollout" width="640"></p>
+  <p class="muted">Checkpoint local: <code>runs/glyph_overfit/ckpt_best.pt</code>. Color and Fullvideo scale wait until mono stays structured.</p>
+
+  <h2>Phase C — UCF101 Fullvideo (color-carrier baseline — failed)</h2>
   <p>
     Finetune on <a href="https://huggingface.co/datasets/bitmind/UCF101Fullvideo">bitmind/UCF101Fullvideo</a>
     (~7&nbsp;GB corpus): <strong>13451</strong> videos / <strong>101</strong> classes, warm-started from
